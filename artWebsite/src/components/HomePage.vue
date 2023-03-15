@@ -52,7 +52,8 @@ export default{
   left: 0;
   height: 100%;
   width: 100%;
-  background: #69EBCD;
+  /*background: #69EBCD; original background*/
+  background: linear-gradient(170deg, #B6FF7D 0%, #159947 70%);
 }
 
 .card {
@@ -80,8 +81,7 @@ export default{
 
 hr {
   width: 80%;
-  border: 4px solid #000 !important;
-  background-color: #eee !important;
+  border: 4px solid #087FD6;
   border-radius: 6px;
 }
 
@@ -96,14 +96,16 @@ hr {
 }
 .option-button1, .option-button2 {
   font-family: lobster;
-  background-color: #69EBCD;
-  border: none;
+  background-color: #FFF;
+  border: 3px solid #000;
   border-radius: 20px;
   width: 70%;
 }
 
 .option-button1:hover, .option-button2:hover {
-  background-color: #CFFFEE;
+  background-color: #087FD6;
+  color: #FFF;
+  border: none;
 }
 
 .footer-info {
@@ -141,7 +143,7 @@ a, a:visited {
 }
 
 a:hover {
-  color: #69EBCD;
+  color: #087FD6;
   font-weight: bold;
 }
 .website {
