@@ -4,7 +4,7 @@
 
 <script>
 export default{
-  name: 'blogBase',
+  name: 'BlogPage',
   data () {
     return {}
   }

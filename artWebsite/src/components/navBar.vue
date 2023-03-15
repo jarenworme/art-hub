@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar"></div>
+  <div class="navbar">navbar container</div>
 </template>
 
 <script>
@@ -13,7 +13,6 @@ export default{
 
 <style scoped>
 .navbar{
-  background-color: black;
   height: 200px;
 }
 </style>

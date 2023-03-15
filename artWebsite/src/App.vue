@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import HelloWorld from './components/HomePage.vue'
+import BasePage from './components/BasePage.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    BasePage
   }
 }
 </script>
