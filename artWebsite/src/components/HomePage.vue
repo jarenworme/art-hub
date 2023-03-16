@@ -12,7 +12,8 @@
     </div>
     <div class="footer-info">
       <div class="logo">
-        <img src="https://lh6.googleusercontent.com/b7bjzRg3j3Xa1XH7Z6DAszuhXI5Ws2LJxGaqIFniiNDuDp47KUioo6vbQsDWbtBgr1sUM8oOMYKt1Wm_BSNafJ1HwZQRMEk3YyMFF-bBnnrSwFdYQjDAJnEqz8TWw16JWQ=w1280">
+        <img src="@/assets/jwlogo.png"/>
+        <!--img src="https://lh6.googleusercontent.com/b7bjzRg3j3Xa1XH7Z6DAszuhXI5Ws2LJxGaqIFniiNDuDp47KUioo6vbQsDWbtBgr1sUM8oOMYKt1Wm_BSNafJ1HwZQRMEk3YyMFF-bBnnrSwFdYQjDAJnEqz8TWw16JWQ=w1280"-->
       </div>
       <div class="spacer"></div>
       <div class="instagram">
@@ -124,7 +125,7 @@ hr {
 }
 
 img {
-  margin-top: -30%;
+  margin-top: -40%;
   height: 100%;
 }
 
