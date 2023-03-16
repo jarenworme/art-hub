@@ -4,16 +4,15 @@
     <link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet">
   <div class="card">
     <div class="button1-container">
-      <button class="option-button1" v-on:click="$emit('page-2')">Art Hub</button>
+      <button class="option-button1" v-on:click="setPage(2)">Art Hub</button>
     </div>
     <hr>
     <div class="button2-container">
-      <button class="option-button2" v-on:click="$emit('page-3')">Jaren's Collections</button>
+      <button class="option-button2" v-on:click="setPage(3)">Jaren's Collections</button>
     </div>
     <div class="footer-info">
       <div class="logo">
         <img src="@/assets/jwlogo.png"/>
-        <!--img src="https://lh6.googleusercontent.com/b7bjzRg3j3Xa1XH7Z6DAszuhXI5Ws2LJxGaqIFniiNDuDp47KUioo6vbQsDWbtBgr1sUM8oOMYKt1Wm_BSNafJ1HwZQRMEk3YyMFF-bBnnrSwFdYQjDAJnEqz8TWw16JWQ=w1280"-->
       </div>
       <div class="spacer"></div>
       <div class="instagram">
@@ -32,12 +31,12 @@
 <script>
 export default{
   name: 'HomePage',
-  props: {
-    name: Number
-  },
   data () {
-    return {
-      newpage: 1
+    return {}
+  },
+  methods: {
+    setPage (pagenum) {
+      this.$emit('newpage', pagenum)
     }
   }
 }
