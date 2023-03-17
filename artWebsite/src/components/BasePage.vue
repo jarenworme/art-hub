@@ -6,13 +6,8 @@
     <div v-if="pagenum == 1" class="home-page">
       <HomePage :pagenum="pagenum" @newpage="switchPage"></HomePage>
     </div>
-    <div v-if="pagenum == 2" class="blog-page">
-      <BlogPage></BlogPage>
-    </div>
-    <PieceCollections v-if="pagenum == 3" :template="template" :adminOrDev="userType"></PieceCollections>
-    <!--div v-if="pagenum == 3" style="height: 900px;" class="jaren-page">
-      
-    </div-->
+    <BlogPage v-if="pagenum == 2"></BlogPage>
+    <PieceCollections v-if="pagenum == 3"></PieceCollections>
   </div>
 </template>
 
@@ -44,23 +39,6 @@ export default {
 </script>
 
 <style scoped>
-.very-back {
-  display: flex;
-	flex-direction: column;
-	justify-content: stretch;
-	width: 100%;
-	height: 100vh;
-  max-height: 100vh;
-	margin: 0px 0px 0px auto;
-	background-color: #EEEEEE;
-}
-.title-header {
-	background-color: white;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 115px;
-}
 .base-page {
   height: 100%;
   width: 100%;

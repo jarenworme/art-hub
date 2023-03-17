@@ -12,7 +12,7 @@ export default{
   name: 'PieceCollections',
   data () {
     return {
-      egObj: ["a", "b", "c", "d", "e", "f"],
+      egObj: ["img1", "b", "c", "d", "e", "f"],
       type: "a"
     };
   }
@@ -27,23 +27,23 @@ export default{
   width: 100%;
   height: 100%;
   left: 0;
-  background-color: #eee;
+  background-color: #087FD6;
 }
 
-.categories {
-  margin-top: 5vh;
-  background-color: #FFF;
-  border-radius: 30px;
-  height: 200px;
+.categories, .collections {
   width: 80%;
+  box-shadow: 3px 3px #b1daf8;
+  border-radius: 30px;
+  background-color: #FFF;
+}
+.categories {
+  margin-top: 15vh;
+  height: 200px;
 }
 
 .collections {
   margin-top: 5%;
-  background-color: #FFF;
-  border-radius: 30px;
   height: 300px;
-  width: 80%;
 }
 </style>
 
