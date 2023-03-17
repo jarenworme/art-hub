@@ -9,7 +9,7 @@
     <div v-if="pagenum == 2" class="blog-page">
       <BlogPage></BlogPage>
     </div>
-    <PieceCollections :template="template" :adminOrDev="userType"></PieceCollections>
+    <PieceCollections v-if="pagenum == 3" :template="template" :adminOrDev="userType"></PieceCollections>
     <!--div v-if="pagenum == 3" style="height: 900px;" class="jaren-page">
       
     </div-->
