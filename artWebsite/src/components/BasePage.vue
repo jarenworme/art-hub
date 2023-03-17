@@ -6,10 +6,13 @@
     <div v-if="pagenum == 1" class="home-page">
       <HomePage :pagenum="pagenum" @newpage="switchPage"></HomePage>
     </div>
-    <div v-if="pagenum == 2" class="blog-page">art hub page
+    <div v-if="pagenum == 2" class="blog-page">
+      <BlogPage></BlogPage>
     </div>
-    <div v-if="pagenum == 3" class="jaren-page">jarens art page
-    </div>
+    <PieceCollections :template="template" :adminOrDev="userType"></PieceCollections>
+    <!--div v-if="pagenum == 3" style="height: 900px;" class="jaren-page">
+      
+    </div-->
   </div>
 </template>
 
@@ -17,7 +20,7 @@
 import navBar from './navBar.vue'
 import HomePage from './HomePage.vue'
 import BlogPage from './BlogPage.vue'
-import pieceCollections from './pieceCollections.vue'
+import PieceCollections from './pieceCollections.vue'
 
 export default {
   name: 'BasePage',
@@ -25,7 +28,7 @@ export default {
     navBar,
     HomePage,
     BlogPage,
-    pieceCollections
+    PieceCollections
   },
   data () {
     return {
@@ -35,19 +38,39 @@ export default {
   methods: {
     switchPage (pagenum) {
       this.pagenum = pagenum
-      console.log(this.pagenum)
     }
   }
 }
 </script>
 
 <style scoped>
+.very-back {
+  display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+	width: 100%;
+	height: 100vh;
+  max-height: 100vh;
+	margin: 0px 0px 0px auto;
+	background-color: #EEEEEE;
+}
+.title-header {
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 115px;
+}
+.base-page {
+  height: 100%;
+  width: 100%;
+}
 .nav-bar {
   width: 100%;
   height: 10vh;
   top: 0;
   left: 0;
   position: fixed;
-  background: #000;
+  background: #282828;
 }
 </style>
