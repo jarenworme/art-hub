@@ -1,7 +1,8 @@
 <template>
   <div class="collections-base">
-    <div class="categories">
-      <button></button>
+    <div class="set-layout">
+      <button class="select-layout-button" v-on:click="layout = 'all'">View All</button>
+      <button class="select-layout-button" v-on:click="layout = 'select'">View by Colletion</button>
     </div>
     <div class="upload">
       <input class="question-text-box" type="text" placeholder="Untitled Question" v-model="currObj.title">
@@ -17,9 +18,22 @@
       <button v-for="item in colObj" v-on:click="selectCollection(item.name)">{{ item.name }}</button>
       <button v-on:click="addPiece()">Submit</button>
     </div>
-    <div v-for="item in colObj" class="collection">
+    <div v-if="layout == 'select'" class="categories">
+      <button v-for="collection in colObj" v-on:click="viewedCollection = collection.content">{{ collection.name }}</button>
+      <h4>{{ currCollection }}</h4>
+    </div>
+    <div v-if="layout == 'all'" v-for="item in colObj" class="collection">
       <h1>{{item.name }}</h1>
+      <hr>
       <div v-for="piece in item.content" class="piece">
+        <h1>{{piece.title }}</h1>
+        <div class="img-container">
+          <img :src="piece.imgSrc">
+        </div>
+      </div>
+    </div>
+    <div v-if="layout == 'select'" class="collection">
+      <div v-for="piece in viewedCollection" class="piece">
         <h1>{{piece.title }}</h1>
         <div class="img-container">
           <img :src="piece.imgSrc">
@@ -35,11 +49,15 @@ export default{
   name: 'PieceCollections',
   data () {
     return {
+      layout: "all",
+      viewedCollection: "",
       currObj: {title: "", imgSrc: ""},
       currCollection: "",
       colObj: [
-        {name: "collection1", content:[{title: "avatar", imgSrc: ""}, {title: "mannfield", imgSrc: "@/assets/Mannfield.jpg"}, {title: "golf", imgSrc: "@/assets/IMG-0427.jpg"}]},
-        {name: "collection2", content:[{title: "col2item", imgSrc: ""}]},
+        {name: "collectioni", content:[{title: "avatar", imgSrc: ""}, {title: "mannfield", imgSrc: "@/assets/Mannfield.jpg"}, {title: "golf", imgSrc: "@/assets/IMG-0427.jpg"}]},
+        {name: "collectionii", content:[{title: "col2item", imgSrc: ""}]},
+        {name: "collection1", content:[]},
+        {name: "collection2", content:[]},
         {name: "collection3", content:[]}
       ],
       index: 3
@@ -81,14 +99,19 @@ export default{
   background-color: #087FD6;
 }
 
-.categories, .upload, .collection {
+.categories, .set-layout, .upload, .piece {
   width: 80%;
   box-shadow: 3px 3px #b1daf8;
   border-radius: 30px;
   background-color: #FFF;
 }
-.categories {
+
+.set-layout {
   margin-top: 15vh;
+  height: 140px;
+}
+.categories {
+  margin-top: 5vh;
   height: 200px;
 }
 
@@ -98,6 +121,8 @@ export default{
 }
 
 .collection {
+  color: #FFF;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -108,11 +133,22 @@ export default{
   margin-bottom: 5vh;
 }
 
+h1 {
+  margin: 0;
+}
+
+hr {
+  border: 3px solid #FFF;
+  width: 100%;
+  margin: 0 0 -2vh 0;
+}
+
 .piece {
   margin-top: 5vh;
   height: 300px;
-  background-color: #abc;
+  background-color: #FFF;
   width: 90%;
+  color: #000;
 }
 
 .img-container{
