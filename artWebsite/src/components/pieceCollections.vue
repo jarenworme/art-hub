@@ -13,6 +13,7 @@
 					<path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
 					<path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
 				</svg>
+        <h4 v-if="currObj.imgSrc != ''">image selected successfully!</h4>
 			</label>
       <h4>selected collection: {{ currCollection }}</h4>
       <button v-for="item in colObj" v-on:click="selectCollection(item.name)">{{ item.name }}</button>
@@ -22,18 +23,18 @@
       <button v-for="collection in colObj" v-on:click="viewedCollection = collection.content">{{ collection.name }}</button>
       <h4>{{ currCollection }}</h4>
     </div>
-    <div v-if="layout == 'all'" v-for="item in colObj" class="collection">
+    <div v-if="layout == 'all'" v-for="item in colObj" class="collection-all">
       <h1>{{item.name }}</h1>
       <hr>
-      <div v-for="piece in item.content" class="piece">
+      <div v-for="piece in item.content" class="piece-all">
         <h1>{{piece.title }}</h1>
         <div class="img-container">
           <img :src="piece.imgSrc">
         </div>
       </div>
     </div>
-    <div v-if="layout == 'select'" class="collection">
-      <div v-for="piece in viewedCollection" class="piece">
+    <div v-if="layout == 'select'" class="collection-select">
+      <div v-for="piece in viewedCollection" class="piece-select">
         <h1>{{piece.title }}</h1>
         <div class="img-container">
           <img :src="piece.imgSrc">
@@ -99,7 +100,7 @@ export default{
   background-color: #087FD6;
 }
 
-.categories, .set-layout, .upload, .piece {
+.categories, .set-layout, .upload, .piece-select, .piece-all {
   width: 80%;
   box-shadow: 3px 3px #b1daf8;
   border-radius: 30px;
@@ -120,35 +121,53 @@ export default{
   margin-top: 5vh;
 }
 
-.collection {
+.collection-all, .collection-select {
   color: #FFF;
   width: 80%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   margin-top: 5vh;
 }
 
-.collection:last-of-type{
+.collection-all:last-of-type, .collection-select{
   margin-bottom: 5vh;
+}
+
+.collection-all{
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.collection-select{
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 {
   margin: 0;
 }
 
-hr {
+hr{
   border: 3px solid #FFF;
   width: 100%;
-  margin: 0 0 -2vh 0;
+  margin: 1vh 0;
 }
 
-.piece {
-  margin-top: 5vh;
+.piece-all, .piece-select {
+  color: #000;
   height: 300px;
   background-color: #FFF;
+}
+
+.piece-all {
+  margin: 2vh;
+  width: 45%;
+}
+
+.piece-select {
+  margin-top: 5vh;
   width: 90%;
-  color: #000;
 }
 
 .img-container{
