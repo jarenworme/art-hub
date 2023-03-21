@@ -2,7 +2,7 @@
   <div class="navbar">
     <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
     <div class="logo">
-      <img src="@/assets/jwlogo.png"/>
+      <img src="@/assets/jwlogo.png">
     </div>
     <div class="button-space">
       <div class="button-container">
@@ -48,6 +48,8 @@ export default{
   width: 10%;
   height: 80%;
   margin-left: 3%;
+  background-color: aliceblue;
+  border-radius: 20px;
 }
 
 img {

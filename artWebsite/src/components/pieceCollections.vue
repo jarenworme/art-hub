@@ -3,18 +3,50 @@
     <div class="categories">
       <button></button>
     </div>
-    <div v-for="item in egObj" class="collections">{{ item }}</div>
+    <div class="upload">
+      <input class="question-text-box" type="text" placeholder="Untitled Question" v-model="currObj.title">
+      <label>
+			  <input :id="'file-upload-' + index" type="file" class="hide" accept="image/*" v-on:change="uploadImage()">
+			  <!-- file upload icon -->
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+					<path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+					<path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
+				</svg>
+			</label>
+      <button v-on:click="addPiece()">Submit</button>
+    </div>
+    <div v-for="item in colObj" class="collections">
+      <h1>{{ item.title }}</h1>
+      <div class="img-container">
+        <img :src="item.imgSrc">
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+
 export default{
   name: 'PieceCollections',
   data () {
     return {
-      egObj: ["img1", "b", "c", "d", "e", "f"],
-      type: "a"
+      currObj: {title: "", imgSrc: ""},
+      colObj: [{title: "avatar", imgSrc: ""}, {title: "mannfield", imgSrc: "@/assets/Mannfield.jpg"}, {title: "golf", imgSrc: "@/assets/IMG-0427.jpg"}],
+      index: 3
     };
+  },
+  methods: {
+    uploadImage() {
+			const uploadButton = document.getElementById("file-upload-" + this.index)
+			this.currObj.imgSrc = URL.createObjectURL(uploadButton.files[0])
+			//Vue.set(this.currObj, id-1, URL.createObjectURL(uploadButton.files[0]))
+		},
+    addPiece() {
+      console.log(this.colObj)
+      this.colObj.push(this.currObj)
+      this.currObj = {title: "", imgSrc: ""}
+      this.index++
+    },
   }
 }
 </script>
@@ -30,7 +62,7 @@ export default{
   background-color: #087FD6;
 }
 
-.categories, .collections {
+.categories, .collections, .upload {
   width: 80%;
   box-shadow: 3px 3px #b1daf8;
   border-radius: 30px;
@@ -41,9 +73,27 @@ export default{
   height: 200px;
 }
 
+.upload {
+  height: 200px;
+  margin-top: 5vh;
+}
+
 .collections {
   margin-top: 5%;
   height: 300px;
+}
+
+.img-container{
+  width: 60%;
+  height: 70%;
+}
+
+img{
+  height: 100%;
+}
+
+.hide{
+  width: 0px;
 }
 </style>
 
