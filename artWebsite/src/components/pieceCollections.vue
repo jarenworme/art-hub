@@ -13,12 +13,17 @@
 					<path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
 				</svg>
 			</label>
+      <h4>selected collection: {{ currCollection }}</h4>
+      <button v-for="item in colObj" v-on:click="selectCollection(item.name)">{{ item.name }}</button>
       <button v-on:click="addPiece()">Submit</button>
     </div>
-    <div v-for="item in colObj" class="collections">
-      <h1>{{ item.title }}</h1>
-      <div class="img-container">
-        <img :src="item.imgSrc">
+    <div v-for="item in colObj" class="collection">
+      <h1>{{item.name }}</h1>
+      <div v-for="piece in item.content" class="piece">
+        <h1>{{piece.title }}</h1>
+        <div class="img-container">
+          <img :src="piece.imgSrc">
+        </div>
       </div>
     </div>
   </div>
@@ -31,7 +36,12 @@ export default{
   data () {
     return {
       currObj: {title: "", imgSrc: ""},
-      colObj: [{title: "avatar", imgSrc: ""}, {title: "mannfield", imgSrc: "@/assets/Mannfield.jpg"}, {title: "golf", imgSrc: "@/assets/IMG-0427.jpg"}],
+      currCollection: "",
+      colObj: [
+        {name: "collection1", content:[{title: "avatar", imgSrc: ""}, {title: "mannfield", imgSrc: "@/assets/Mannfield.jpg"}, {title: "golf", imgSrc: "@/assets/IMG-0427.jpg"}]},
+        {name: "collection2", content:[{title: "col2item", imgSrc: ""}]},
+        {name: "collection3", content:[]}
+      ],
       index: 3
     };
   },
@@ -43,9 +53,18 @@ export default{
 		},
     addPiece() {
       console.log(this.colObj)
-      this.colObj.push(this.currObj)
-      this.currObj = {title: "", imgSrc: ""}
-      this.index++
+      for(let i = 0; i<this.colObj.length; i++){
+        if(this.colObj[i].name == this.currCollection){
+          this.colObj[i].content.push(this.currObj)
+          this.currObj = {title: "", imgSrc: ""}
+          this.index++
+          this.currCollection = ""
+        }
+      }
+      
+    },
+    selectCollection(colName) {
+      this.currCollection = colName
     },
   }
 }
@@ -62,7 +81,7 @@ export default{
   background-color: #087FD6;
 }
 
-.categories, .collections, .upload {
+.categories, .upload, .collection {
   width: 80%;
   box-shadow: 3px 3px #b1daf8;
   border-radius: 30px;
@@ -78,9 +97,22 @@ export default{
   margin-top: 5vh;
 }
 
-.collections {
-  margin-top: 5%;
+.collection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5vh;
+}
+
+.collection:last-of-type{
+  margin-bottom: 5vh;
+}
+
+.piece {
+  margin-top: 5vh;
   height: 300px;
+  background-color: #abc;
+  width: 90%;
 }
 
 .img-container{
