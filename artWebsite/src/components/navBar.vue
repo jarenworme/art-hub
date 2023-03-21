@@ -1,15 +1,19 @@
 <template>
   <div class="navbar">
     <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
-    <div class="logo"></div>
-    <div class="button-container">
-      <button class="nav-button" v-on:click="setPage(1)"><div class="home">home</div></button>
+    <div class="logo">
+      <img src="@/assets/jwlogo.png"/>
     </div>
-    <div v-if="pagenum == 3" class="button-container">
-      <button class="nav-button" v-on:click="setPage(2)"><div class="text">arthub</div></button>
-    </div>
-    <div v-if="pagenum == 2" class="button-container">
-      <button class="nav-button" v-on:click="setPage(3)"><div class="text">list collections</div></button>
+    <div class="button-space">
+      <div class="button-container">
+       <button class="nav-button" v-on:click="setPage(1)"><div class="home">home</div></button>
+      </div>
+      <div v-if="pagenum == 3" class="button-container">
+        <button class="nav-button" v-on:click="setPage(2)"><div class="text">arthub</div></button>
+      </div>
+      <div v-if="pagenum == 2" class="button-container">
+        <button class="nav-button" v-on:click="setPage(3)"><div class="text">list collections</div></button>
+      </div>
     </div>
   </div>
 </template>
@@ -36,23 +40,27 @@ export default{
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   height: 100%;
 }
 
 .logo {
-  width: 20%;
+  width: 10%;
+  height: 80%;
+  margin-left: 3%;
 }
 
-/*
-.button-container{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  background-color: orange;
+img {
+  height: 100%;
 }
-*/
+.button-space {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
 
 .nav-button {
   display: flex;
